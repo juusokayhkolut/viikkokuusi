@@ -9,7 +9,6 @@ public class App {
 
         int choice;
         do {
-            System.out.println("*** Esimerkkiajo ***");
             System.out.println("1) Luo uusi kulkuneuvo, 2) Listaa kulkuneuvot 3) Aja autoja, 4) Lennä lentokoneita, 5) Seilaa laivoja, 0) Lopeta ohjelma");
             choice = scanner.nextInt();
 
@@ -48,7 +47,15 @@ public class App {
                     break;
                 case 2:
                     for (Vehicle vehicle : vehicles) {
-                        System.out.println(vehicle.getInfo() + "Moottori: " + vehicle.engine.name + " " + vehicle.engine.power + "kW" + "\n" + "Huippunopeus: " + vehicle.maxSpeed + "km/h\n");
+                        if (vehicle.getClass().getSimpleName().contains("Car")) {
+                            System.out.println("auto: " + vehicle.manufacturer + " " + vehicle.model);
+                        } else if (vehicle.getClass().getSimpleName().contains("Plane")) {
+                            System.out.println("lentokone: " + vehicle.manufacturer + " " + vehicle.model);
+                        } else {
+                            System.out.println("laiva: " + vehicle.manufacturer + " " + vehicle.model);
+                        }
+
+                        System.out.println("Moottori: " + vehicle.engine.name + " " + vehicle.engine.power + "kW" + "\n" + "Huippunopeus: " + vehicle.maxSpeed + "km/h\n");
                     }
                     break;
                 case 3:
